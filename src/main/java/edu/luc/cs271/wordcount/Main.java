@@ -19,5 +19,34 @@ public class Main {
     //    using Collections.sort and an instance of the provided comparator (after fixing the latter)
     // 7. print the (up to) ten most frequent words in the text
 
+
+    Map<String, Integer> wordMap = new TreeMap<>();
+
+    WordCounter wordc = new WordCounter(wordMap);
+
+    List<String> wordList = new ArrayList<>();
+    while (input.hasNext()) {
+      String word = input.next();
+      wordList.add(word);
+    }
+
+    wordc.countWords(wordList.iterator());
+
+    Map<String, Integer> wordCountMap = wordc.getCounts();
+
+    int mapSize = wordCountMap.size();
+
+    List<Map.Entry<String, Integer>> mapList = new ArrayList<>(mapSize);
+
+    for (Map.Entry<String, Integer> pair : wordCountMap.entrySet()) {
+      mapList.add(pair);
+    }
+
+    // Collections.sort(List, Comparator);
+    Collections.sort(mapList, new DescendingByCount());
+    for (int i = 0; i < 10; i++) {
+      System.out.println(mapList.get(i).getKey() + " = " + mapList.get(i).getValue());
+    }
+
   }
 }
