@@ -14,9 +14,10 @@ public class TestWordCounter {
 
   // TODO complete this test class
   private Map<String, Integer> wordMap;;
-  private WordCounter fixture;
+  
   // TODO declare a reference to the SUT (system under test), i.e., WordCounter
-
+  private WordCounter fixture;
+  
   @Before
   public void setUp() {
     wordMap = new HashMap<>();
